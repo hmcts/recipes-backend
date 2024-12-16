@@ -1,6 +1,11 @@
 # Recipes API backend
 
-This is a generalised backend service which can be used to deploy to multiple clusters for testing purposes with customization via the chart values.
+This is a generalised backend service that provides an API.
+
+This repository and the CI/CD will generate a container image and Helm chart that can be consumed and deployed to AKS.
+It should be possible to deploy this to multiple AKS clusters with unique values e.g. CFT and SDS
+
+The Helm chart in use is dependant on the [HMCTS Java](https://github.com/hmcts/chart-java) chart so all [values](https://github.com/hmcts/chart-java/blob/master/java/values.yaml) are available for use within this chart.
 
 ## Purpose
 
