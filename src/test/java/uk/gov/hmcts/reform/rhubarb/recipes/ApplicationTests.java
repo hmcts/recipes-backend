@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class ApplicationTests {
 
     @Test
-    void contextLoads() {
+    void contextLoads() { // default implementation
     }
 
 }
