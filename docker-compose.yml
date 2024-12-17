@@ -1,0 +1,27 @@
+---
+version: '2.2'
+
+services:
+  recipes-backend:
+    build:
+      context: .
+    cpus: 2.5
+    mem_limit: 1024M
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DATABASE: recipesdb
+      POSTGRES_USER: recipesuser
+      POSTGRES_PASSWORD: recipespassword
+      POSTGRES_SSL_MODE: disable
+      AZURE_APPLICATIONINSIGHTS_INSTRUMENTATIONKEY:
+      JAVA_OPTS:
+    ports:
+      - 9080:4550
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: recipesuser
+      POSTGRES_PASSWORD: recipespassword
+      POSTGRES_DB: recipesdb
+    ports:
+      - 5460:5432
