@@ -2,7 +2,6 @@ package uk.gov.hmcts.reform.rhubarb.recipes.endpoint;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +29,8 @@ public class RecipeController {
 
     @GetMapping(path = "/{id}")
     @Operation(summary = "Find recipe by ID")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Success"),
-        @ApiResponse(responseCode = "404", description = "Not found"),
-    })
+    @ApiResponse(responseCode = "200", description = "Success")
+    @ApiResponse(responseCode = "404", description = "Not found")
     public Recipe read(
         @PathVariable String id
     ) {
@@ -45,9 +42,7 @@ public class RecipeController {
 
     @GetMapping
     @Operation(summary = "Find all your drafts", description = "Returns an empty array when no drafts were found")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Success"),
-    })
+    @ApiResponse(responseCode = "200", description = "Success")
     public RecipeList readAll() {
 
         List<Recipe> recipes = recipeStore.readAll();
