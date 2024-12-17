@@ -53,7 +53,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
         HttpStatusCode status,
         WebRequest request
     ) {
-        LOGGER.error(ex.getMessage(), ex);
+        LOGS.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(
             new ErrorResult(BAD_ARGUMENT, singletonList("The draft document is required.")),
@@ -69,14 +69,14 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
         HttpStatusCode status,
         WebRequest request
     ) {
-        LOGGER.error(ex.getMessage(), ex);
+        LOGS.error(ex.getMessage(), ex);
         return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 
 
     @ExceptionHandler(NoRecipeFoundException.class)
     public ResponseEntity<ErrorResult> handleNoDocumentFoundException(HttpServletRequest req, Exception exception) {
-        LOGGER.debug("no draft document found for user.");
+        LOGS.debug("no draft document found for user.");
 
         return new ResponseEntity<>(
             new ErrorResult(NO_RECORD_FOUND, singletonList(exception.getMessage())),
@@ -86,7 +86,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResult> unknownException(HttpServletRequest req, Exception exception) {
-        LOGGER.error(exception.getMessage(), exception);
+        LOGS.error(exception.getMessage(), exception);
         return new ResponseEntity<>(
             new ErrorResult(SERVER_ERROR, emptyList()),
             INTERNAL_SERVER_ERROR
