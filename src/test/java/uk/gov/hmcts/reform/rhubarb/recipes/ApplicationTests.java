@@ -10,7 +10,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class ApplicationTests {
 
     @Test
+<<<<<<< HEAD
     void contextLoads() { // default implementation
+=======
+    void contextLoads() {
+>>>>>>> demo
     }
 
 }
