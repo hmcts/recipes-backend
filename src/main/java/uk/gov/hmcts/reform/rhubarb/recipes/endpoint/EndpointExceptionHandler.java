@@ -28,7 +28,7 @@ import static uk.gov.hmcts.reform.rhubarb.recipes.domain.ErrorCode.SERVER_ERROR;
 @ControllerAdvice
 public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EndpointExceptionHandler.class);
+    private static final Logger LOGS = LoggerFactory.getLogger(EndpointExceptionHandler.class);
 
 
     @Override
@@ -38,7 +38,7 @@ public class EndpointExceptionHandler extends ResponseEntityExceptionHandler {
         HttpStatusCode status,
         WebRequest request
     ) {
-        LOGGER.error(ex.getMessage(), ex);
+        LOGS.error(ex.getMessage(), ex);
 
         return new ResponseEntity<>(
             new ErrorResult(INVALID_AUTH_TOKEN, singletonList("Authorization header is required.")),

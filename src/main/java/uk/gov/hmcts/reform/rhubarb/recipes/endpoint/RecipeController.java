@@ -30,10 +30,8 @@ public class RecipeController {
 
     @GetMapping(path = "/{id}")
     @Operation(summary = "Find recipe by ID")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Success"),
-        @ApiResponse(responseCode = "404", description = "Not found"),
-    })
+    @ApiResponse(responseCode = "200", description = "Success"),
+    @ApiResponse(responseCode = "404", description = "Not found"),
     public Recipe read(
         @PathVariable String id
     ) {
@@ -45,9 +43,7 @@ public class RecipeController {
 
     @GetMapping
     @Operation(summary = "Find all your drafts", description = "Returns an empty array when no drafts were found")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Success"),
-    })
+    @ApiResponse(responseCode = "200", description = "Success"),
     public RecipeList readAll() {
 
         List<Recipe> recipes = recipeStore.readAll();
