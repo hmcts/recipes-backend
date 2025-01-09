@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.get;
 
 class RecipesTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RecipesTest.class);
+    private static final Logger LOGS = LoggerFactory.getLogger(RecipesTest.class);
 
     @BeforeEach
     void before() {
@@ -21,7 +21,7 @@ class RecipesTest {
 
         RestAssured.baseURI = appUrl;
         RestAssured.useRelaxedHTTPSValidation();
-        LOGGER.info("Base Url set to: " + RestAssured.baseURI);
+        LOGS.info("Base Url set to: " + RestAssured.baseURI);
     }
 
     @Test
