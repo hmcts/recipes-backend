@@ -6,16 +6,17 @@ def type = "java"
 def product = "recipes"
 def component = "backend"
 
+// Unused code, no API is deployed for this service
 // Determine the environment based on the Jenkins URL
-def keyVault = env.JENKINS_URL.contains('sds') ? 'toffeesi-${env}' : 'plumsi-${env}'
+// def keyVault = env.JENKINS_URL.contains('sds') ? 'toffeesi-${env}' : 'plumsi-${env}'
 
-def apiTestSecrets = [ "${keyVault}" :
-  [
-    secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
-    secret('test-client-key-store-password', 'TEST_CLIENT_KEY_STORE_PASSWORD'),
-    secret('test-client-subscription-key', 'TEST_CLIENT_SUBSCRIPTION_KEY')
-  ]
-]
+// def apiTestSecrets = [ "${keyVault}" :
+//   [
+//     secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
+//     secret('test-client-key-store-password', 'TEST_CLIENT_KEY_STORE_PASSWORD'),
+//     secret('test-client-subscription-key', 'TEST_CLIENT_SUBSCRIPTION_KEY')
+//   ]
+// ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   [ $class: 'AzureKeyVaultSecret',
@@ -32,9 +33,9 @@ withPipeline(type, product, component) {
   enablePerformanceTest()
   enableAksStagingDeployment()
   disableLegacyDeployment()
-  enableApiGatewayTest()
-  onNonPR() {
-    loadVaultSecrets(apiTestSecrets)
-  }
+  // enableApiGatewayTest()
+  // onNonPR() {
+  //   loadVaultSecrets(apiTestSecrets)
+  // }
   expires(expiresAfter)
 }
