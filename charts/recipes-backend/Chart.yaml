@@ -1,7 +1,7 @@
 name: recipes-backend
 apiVersion: v2
 home: https://github.com/hmcts/recipes-backend
-version: 0.8.28
+version: 0.1.0
 description: HMCTS recipes backend service (test application)
 maintainers:
   - name: HMCTS CNP Team
