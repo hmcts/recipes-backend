@@ -38,5 +38,3 @@ withPipeline(type, product, component) {
   }
   expires(expiresAfter)
 }
-
-
