@@ -6,7 +6,10 @@ def type = "java"
 def product = "recipes"
 def component = "backend"
 
-def apiTestSecrets = [ 'plumsi-${env}' :
+// Determine the environment based on the Jenkins URL
+def keyVault = env.JENKINS_URL.contains('sds') ? 'toffeesi' : 'plumsi'
+
+def apiTestSecrets = [ '${keyVault}-${env}' :
   [
     secret('test-client-key-store', 'TEST_CLIENT_KEY_STORE'),
     secret('test-client-key-store-password', 'TEST_CLIENT_KEY_STORE_PASSWORD'),
@@ -35,3 +38,5 @@ withPipeline(type, product, component) {
   }
   expires(expiresAfter)
 }
+
+
